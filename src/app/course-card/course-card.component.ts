@@ -8,6 +8,7 @@ import { Course } from "../model/course";
 })
 export class CourseCardComponent implements OnInit {
   @Input() course: Course;
+  @Input() cardIndex: number;
 
   @Output() courseSelected = new EventEmitter<Course>();
 
@@ -19,5 +20,15 @@ export class CourseCardComponent implements OnInit {
     console.log(`clicked`);
 
     this.courseSelected.emit(this.course);
+  }
+
+  isImageVisible() {
+    return this.course && this.course.iconUrl;
+  }
+
+  cardClasses() {
+    if (this.course.category === "BEGINNER") {
+      return ["beginner"];
+    }
   }
 }
