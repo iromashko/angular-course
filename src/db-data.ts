@@ -5,7 +5,6 @@ export const COURSES: any = [
     iconUrl: "",
     longDescription:
       "A detailed walk-through of the most important part of Angular - the Core and Common modules",
-    category: "INTERMEDIATE",
     lessonsCount: 10,
   },
   {
