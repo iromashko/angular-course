@@ -1,10 +1,23 @@
 <ng-container *ngIf="course" #container>
   <div class="course-card" [ngClass]="cardClasses()">
     <div class="course-title">
-      {{ cardIndex || '' + " - " + course.description }}
+      {{ cardIndex || "" + " - " + course.description }}
     </div>
 
-    <ng-content select="course-image"></ng-content>
+    <ng-content
+      select="course-image"
+      *ngIf="course.iconUrl; else noImage"
+    ></ng-content>
+
+    <ng-template #noImage>
+      <ng-container
+        *ngTemplateOutlet="
+          noImgTpl;
+          context: { description: course.description }
+        "
+      ></ng-container>
+    </ng-template>
+
     <ng-content select=".course-description"></ng-content>
     <ng-content></ng-content>
 
